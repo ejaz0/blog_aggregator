@@ -10,16 +10,18 @@ import (
 func main() {
 	cfg, err := config.Read()
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("error reading config: %v", err)
 	}
-	if err := cfg.SetUser("ejaz"); err != nil {
-		log.Fatal(err)
-	}
-	cfg2, err := config.Read()
+	fmt.Printf("Read config: %+v\n", cfg)
+
+	err = cfg.SetUser("lane")
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("couldn't set current user: %v", err)
 	}
 
-	fmt.Println(cfg2.DBURL)
-	fmt.Printf("%+v\n", cfg2)
+	cfg, err = config.Read()
+	if err != nil {
+		log.Fatalf("error reading config: %v", err)
+	}
+	fmt.Printf("Read config again: %+v\n", cfg)
 }
