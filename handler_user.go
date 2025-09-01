@@ -42,7 +42,7 @@ func handlerRegister(s *state, cmd command) error {
 	if err == nil {
 		return fmt.Errorf("user already exists")
 	}
-	if err != nil && err != sql.ErrNoRows {
+	if err != sql.ErrNoRows {
 		return fmt.Errorf("lookup failed %w", err)
 	}
 	id := uuid.New()

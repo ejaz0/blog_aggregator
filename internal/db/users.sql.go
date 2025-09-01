@@ -3,7 +3,7 @@
 //   sqlc v1.29.0
 // source: users.sql
 
-package database
+package db
 
 import (
 	"context"
@@ -48,7 +48,7 @@ func (q *Queries) CreateUser(ctx context.Context, arg CreateUserParams) (User, e
 }
 
 const deleteUsers = `-- name: DeleteUsers :exec
-TRUNCATE users CASCADE
+TRUNCATE users
 `
 
 func (q *Queries) DeleteUsers(ctx context.Context) error {
